@@ -1,27 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import PagerView from 'react-native-pager-view'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { OnboardingOne, OnboardingThree, OnboardingTwo } from '../components/OnboardingPages'
 
 export default function Home() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <View style={styles.separator} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <PagerView style={styles.viewPager} initialPage={0}>
+        <View key='1'>
+          <OnboardingOne />
+        </View>
+        <View key='2'>
+          <OnboardingTwo />
+        </View>
+        <View key='3'>
+          <OnboardingThree />
+        </View>
+      </PagerView>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  viewPager: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignContent: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    height: '100%',
+    marginTop: 20,
   },
 })

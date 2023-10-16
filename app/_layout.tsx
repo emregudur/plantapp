@@ -35,7 +35,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <Stack>
-      <Stack.Screen name='GetStarted' options={{ headerShown: false }} />
+      <Stack.Screen name='index' options={{ headerShown: false }} />
       <Stack.Screen name='Home' options={{ headerShown: false }} />
     </Stack>
   )
