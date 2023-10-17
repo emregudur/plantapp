@@ -1,0 +1,100 @@
+import { StyleSheet } from 'react-native'
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    marginTop: 20,
+    backgroundColor: 'white',
+  },
+  dotsContainer: {
+    flex: 1,
+    alignContent: 'center',
+    alignItems: 'center',
+    gap: 12,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  dotActive: {
+    width: 10,
+    height: 10,
+    borderWidth: 0,
+    borderRadius: 50,
+    backgroundColor: '#13231B',
+  },
+  dot: {
+    width: 6,
+    height: 6,
+    borderWidth: 0,
+    borderRadius: 50,
+    backgroundColor: '#13231B40',
+  },
+  section: {
+    flex: 1,
+    paddingHorizontal: 24,
+  },
+  section2: {
+    flex: 8,
+  },
+  image: {
+    width: '100%',
+    height: '108%',
+    left: 0,
+    objectFit: 'cover',
+  },
+  title: {
+    width: '100%',
+    height: 66,
+    gap: 8,
+
+    fontFamily: 'Rubik-Light',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: 28,
+    lineHeight: 33,
+    letterSpacing: -1,
+    textAlign: 'left',
+
+    color: '#13231B',
+  },
+  titleBold: {
+    fontFamily: 'Rubik-Medium',
+    fontWeight: '800',
+  },
+  subTitle: {
+    fontFamily: 'Rubik-Light',
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 22,
+    letterSpacing: 0.07,
+    textAlign: 'left',
+    color: '#13231BB2',
+  },
+  button: {
+    borderRadius: 12,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    backgroundColor: '#28AF6E',
+  },
+  buttonText: {
+    fontFamily: 'SF Pro Text',
+    fontSize: 15,
+    fontWeight: '700',
+    lineHeight: 24,
+    letterSpacing: -0.2,
+    color: 'white',
+    textAlign: 'center',
+  },
+  terms: {
+    display: 'flex',
+    fontFamily: 'Rubik-Light',
+    fontSize: 11,
+    fontWeight: '400',
+    lineHeight: 15,
+    letterSpacing: 0.07,
+    textAlign: 'center',
+    color: '#597165B2',
+  },
+})

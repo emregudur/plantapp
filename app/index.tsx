@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   title: {
     height: 33,
-    fontFamily: 'Rubik-Medium',
+    fontFamily: 'Rubik-Light',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 28,
@@ -61,10 +61,11 @@ const styles = StyleSheet.create({
     color: '#13231B',
   },
   titleBold: {
+    fontFamily: 'Rubik-Medium',
     fontWeight: '600',
   },
   subTitle: {
-    fontFamily: 'Rubik-Medium',
+    fontFamily: 'Rubik-Light',
     fontSize: 16,
     fontWeight: '400',
     lineHeight: 22,
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#28AF6E',
   },
   buttonText: {
-    fontFamily: 'SF Pro Text',
+    fontFamily: 'Rubik-Light',
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 24,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
   terms: {
     display: 'flex',
-    fontFamily: 'Rubik-Medium',
+    fontFamily: 'Rubik-Light',
     fontSize: 11,
     fontWeight: '400',
     lineHeight: 15,
