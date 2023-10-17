@@ -79,7 +79,7 @@ export default function OnboardingThree() {
               <Text style={styles.buttonTextSub}>First 3 days free, then $529,99/year</Text>
             </View>
             <View style={styles.save}>
-              <Text>Save 50%</Text>
+              <Text style={styles.saveText}>Save 50%</Text>
             </View>
           </LinearGradient>
         </View>
@@ -251,6 +251,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     position: 'absolute',
     backgroundColor: '#28AF6E',
+  },
+  saveText: {
+    fontFamily: 'Rubik-Medium',
+    fontSize: 12,
+    fontWeight: '500',
+    lineHeight: 18,
+    letterSpacing: 0,
+    textAlign: 'left',
   },
   closeButton: {
     position: 'absolute',
