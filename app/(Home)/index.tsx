@@ -1,13 +1,26 @@
+import { useEffect } from 'react'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
 import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import HomeCard from '../../components/HomeCard'
-
+import { actions, useAppSelector } from '../../redux/store'
+import { useDispatch } from 'react-redux'
 const testData: any = []
 
 const testData2: any = []
 
 export default function HomeTab() {
+  const dispatch = useDispatch()
+  const { categories, err, isLoading } = useAppSelector(state => state.category)
+
+  useEffect(() => {
+    dispatch(actions.category.getCategories())
+  }, [])
+
+  useEffect(() => {
+    console.log(err, isLoading)
+  }, [categories, err, isLoading])
+
   return (
     <SafeAreaView edges={['right', 'left', 'top']} style={styles.container}>
       <View style={styles.header}>
@@ -53,6 +66,7 @@ export default function HomeTab() {
             </ScrollView>
           </View>
           <View style={styles.section}>
+            {err ? <Text>Something went wrong</Text> : isLoading ? <Text>Loading...</Text> : null}
             <FlatList
               contentContainerStyle={{
                 display: 'flex',
@@ -60,9 +74,11 @@ export default function HomeTab() {
                 justifyContent: 'space-between',
                 width: '100%',
               }}
-              data={testData2}
+              data={categories}
               numColumns={2}
-              renderItem={({ item }) => <HomeCard isCategory={true} id={item.id} image_uri={item.image.url} title={item.name} />}
+              renderItem={({ item }) => (
+                <HomeCard isCategory={true} id={item.id} image_uri={item.image.url ?? ''} title={item.name} />
+              )}
               keyExtractor={(item: any) => item.id}
             />
           </View>

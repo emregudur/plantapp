@@ -3,6 +3,8 @@ import { CommonActions } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack, useNavigation } from 'expo-router'
 import { useEffect } from 'react'
+import { Provider } from 'react-redux'
+import { store } from '../redux/store'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -35,23 +37,25 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const navigation = useNavigation()
   return (
-    <Stack
-      screenListeners={{
-        focus: async () => {
-          const { name } = navigation.getState().routes[0]
-          const isPayed = (await AsyncStorage.getItem('isPayed')) === 'payed' ? true : false
+    <Provider store={store}>
+      <Stack
+        screenListeners={{
+          focus: async () => {
+            const { name } = navigation.getState().routes[0]
+            const isPayed = (await AsyncStorage.getItem('isPayed')) === 'payed' ? true : false
 
-          if (isPayed === false && name !== 'index') {
-            navigation.dispatch(CommonActions.navigate('index'))
-          } else if (isPayed === true && name !== '(Home)') {
-            navigation.dispatch(CommonActions.navigate('(Home)'))
-          }
-        },
-      }}
-    >
-      <Stack.Screen name='index' options={{ headerShown: false, animation: 'none' }} />
-      <Stack.Screen name='Onboarding' options={{ headerShown: false, animation: 'none' }} />
-      <Stack.Screen name='(Home)' options={{ headerShown: false, animation: 'none' }} />
-    </Stack>
+            if (isPayed === false && name !== 'index') {
+              navigation.dispatch(CommonActions.navigate('index'))
+            } else if (isPayed === true && name !== '(Home)') {
+              navigation.dispatch(CommonActions.navigate('(Home)'))
+            }
+          },
+        }}
+      >
+        <Stack.Screen name='index' options={{ headerShown: false, animation: 'none' }} />
+        <Stack.Screen name='Onboarding' options={{ headerShown: false, animation: 'none' }} />
+        <Stack.Screen name='(Home)' options={{ headerShown: false, animation: 'none' }} />
+      </Stack>
+    </Provider>
   )
 }
