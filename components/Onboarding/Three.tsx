@@ -40,7 +40,13 @@ export default function OnboardingThree() {
 
   const handleClose = () => {
     AsyncStorage.setItem('isPayed', 'notPayed')
-    router.replace('/')
+
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: '(Home)' }],
+      })
+    )
   }
 
   return (

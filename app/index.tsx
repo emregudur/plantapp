@@ -1,5 +1,5 @@
 import { Link } from 'expo-router'
-import { Image, StyleSheet, Text, View, Pressable } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function GetStarted() {

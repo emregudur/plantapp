@@ -1,7 +1,8 @@
-import { useFonts } from 'expo-font'
-import { SplashScreen, Stack } from 'expo-router'
-import { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { CommonActions } from '@react-navigation/native'
+import { useFonts } from 'expo-font'
+import { SplashScreen, Stack, useNavigation } from 'expo-router'
+import { useEffect } from 'react'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -13,12 +14,6 @@ export default function RootLayout() {
     'Rubik-Light': require('../assets/Rubik-Light.ttf'),
     'Rubik-Medium': require('../assets/Rubik-Medium.ttf'),
   })
-
-  useEffect(() => {
-    ;(async () => {
-      console.log(await AsyncStorage.getItem('isPayed'))
-    })()
-  }, [])
 
   useEffect(() => {
     if (error) throw error
@@ -38,11 +33,25 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const navigation = useNavigation()
   return (
-    <Stack>
-      <Stack.Screen name='index' options={{ headerShown: false }} />
-      <Stack.Screen name='Onboarding' options={{ headerShown: false }} />
-      <Stack.Screen name='(Home)' options={{ headerShown: false }} />
+    <Stack
+      screenListeners={{
+        focus: async () => {
+          const { name } = navigation.getState().routes[0]
+          const isPayed = (await AsyncStorage.getItem('isPayed')) === 'payed' ? true : false
+
+          if (isPayed === false && name !== 'index') {
+            navigation.dispatch(CommonActions.navigate('index'))
+          } else if (isPayed === true && name !== '(Home)') {
+            navigation.dispatch(CommonActions.navigate('(Home)'))
+          }
+        },
+      }}
+    >
+      <Stack.Screen name='index' options={{ headerShown: false, animation: 'none' }} />
+      <Stack.Screen name='Onboarding' options={{ headerShown: false, animation: 'none' }} />
+      <Stack.Screen name='(Home)' options={{ headerShown: false, animation: 'none' }} />
     </Stack>
   )
 }
