@@ -15,7 +15,7 @@ export default function GetStarted() {
         <Image style={styles.image} source={require('../assets/getstarted.png')} />
       </View>
       <View style={styles.section}>
-        <Link href={'/Home'} asChild>
+        <Link href={'/Onboarding'} asChild>
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}> Get Started</Text>
           </Pressable>

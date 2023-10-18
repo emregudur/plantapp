@@ -79,7 +79,7 @@ export default StyleSheet.create({
     backgroundColor: '#28AF6E',
   },
   buttonText: {
-    fontFamily: 'SF Pro Text',
+    fontFamily: 'Rubik-Light',
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 24,

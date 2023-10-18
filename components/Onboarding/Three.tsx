@@ -4,6 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { FlatList } from 'react-native-gesture-handler'
 import { LinearGradient } from 'expo-linear-gradient'
 import { MaterialCommunityIcons, FontAwesome, MaterialIcons, AntDesign } from '@expo/vector-icons'
+import { useRouter, useNavigation } from 'expo-router'
+import { CommonActions } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 // import styles from './styles'
 
@@ -19,12 +22,34 @@ const features = [
 
 export default function OnboardingThree() {
   const [activeButton, setActiveButton] = React.useState(1)
+  const router = useRouter()
+  const navigation = useNavigation()
+
+  const handlePay = () => {
+    // pay simulation
+    AsyncStorage.setItem('isPayed', 'payed')
+
+    // geri gidememesi için navigation statini sıfırlıyoruz
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: '(Home)' }],
+      })
+    )
+  }
+
+  const handleClose = () => {
+    AsyncStorage.setItem('isPayed', 'notPayed')
+    router.replace('/')
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require('../../assets/onboarding3.png')} />
       <View style={styles.closeButton}>
-        <AntDesign name='close' size={12} color='white' />
+        <Pressable onPress={handleClose}>
+          <AntDesign name='close' size={12} color='white' />
+        </Pressable>
       </View>
       <View style={styles.section}>
         <Text style={styles.title}>
@@ -85,7 +110,7 @@ export default function OnboardingThree() {
         </View>
       </Pressable>
       <View style={styles.section}>
-        <Pressable style={[styles.button, { backgroundColor: '#28AF6E', justifyContent: 'center' }]}>
+        <Pressable onPress={handlePay} style={[styles.button, { backgroundColor: '#28AF6E', justifyContent: 'center' }]}>
           <Text style={styles.buttonText}>Try free for 3 days</Text>
         </Pressable>
       </View>
@@ -190,7 +215,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#101e17',
   },
   buttonText: {
-    fontFamily: 'SF Pro Text',
+    fontFamily: 'Rubik-Light',
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 24,
@@ -199,7 +224,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   buttonTextSub: {
-    fontFamily: 'Rubik',
+    fontFamily: 'Rubik-Medium',
     fontSize: 12,
     fontWeight: '400',
     lineHeight: 14,
@@ -259,6 +284,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     letterSpacing: 0,
     textAlign: 'left',
+    color: 'white',
   },
   closeButton: {
     position: 'absolute',
