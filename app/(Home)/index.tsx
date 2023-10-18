@@ -19,12 +19,10 @@ export default function HomeTab() {
           <Text style={styles.titleBold}>Good Afternoon! ⛅ </Text>
         </View>
         <View style={[styles.section, { flex: 2 }]}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder='Search for plants'
-            placeholderTextColor={'#AFAFAF'}
-            inlineImageLeft={'asd'}
-          />
+          <View style={styles.searchInputWrapper}>
+            <FontAwesome style={styles.searchIcon} name='search' size={20} color={'#ABABAB'} />
+            <TextInput style={styles.searchInput} placeholder='Search for plants' placeholderTextColor={'#AFAFAF'} />
+          </View>
         </View>
       </View>
       <View style={styles.content}>
@@ -116,10 +114,24 @@ const styles = StyleSheet.create({
   searchInput: {
     width: '100%',
     padding: 20,
+    paddingLeft: 60,
     backgroundColor: '#FFFFFFE0',
-    borderWidth: 0.2,
+    borderWidth: 0.5,
     borderRadius: 12,
     borderColor: '#3C3C4340',
+  },
+  searchInputWrapper: {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  searchIcon: {
+    position: 'absolute',
+    left: 20,
+    right: 0,
+    zIndex: 2,
   },
   headerBg: {
     position: 'absolute',
