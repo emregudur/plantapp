@@ -34,10 +34,9 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   categoryContent: {
-    display: 'flex',
-    width: 158,
+    width: '45%',
     height: 152,
-    margin: 12,
+    marginVertical: 12,
   },
   image: {
     borderWidth: 1,
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#29BB892E',
     borderRadius: 12,
+    width: '100%',
   },
   title: {
     color: 'white',

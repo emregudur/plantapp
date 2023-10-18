@@ -8,7 +8,7 @@ export interface Question {
 }
 
 export interface QuestionState {
-  question: Question[]
+  questions: Question[]
   isLoading: boolean
   err: any
 }

@@ -1,25 +1,20 @@
 import { useEffect } from 'react'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
-import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View, ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import HomeCard from '../../components/HomeCard'
 import { actions, useAppSelector } from '../../redux/store'
 import { useDispatch } from 'react-redux'
-const testData: any = []
-
-const testData2: any = []
 
 export default function HomeTab() {
   const dispatch = useDispatch()
-  const { categories, err, isLoading } = useAppSelector(state => state.category)
+  const category = useAppSelector(state => state.category)
+  const question = useAppSelector(state => state.question)
 
   useEffect(() => {
     dispatch(actions.category.getCategories())
+    dispatch(actions.question.getQuestions())
   }, [])
-
-  useEffect(() => {
-    console.log(err, isLoading)
-  }, [categories, err, isLoading])
 
   return (
     <SafeAreaView edges={['right', 'left', 'top']} style={styles.container}>
@@ -39,7 +34,7 @@ export default function HomeTab() {
         </View>
       </View>
       <View style={styles.content}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.section}>
             <View style={styles.premiumContentWrapper}>
               <View style={styles.premiumContent}>
@@ -59,28 +54,21 @@ export default function HomeTab() {
             <View style={{ paddingVertical: 20 }}>
               <Text style={styles.cardTitle}>Get Started</Text>
             </View>
-            <ScrollView horizontal>
-              {testData.map(item => (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {question.err ? <Text>Something went wrong</Text> : question.isLoading ? <ActivityIndicator /> : null}
+              {question.questions.map(item => (
                 <HomeCard id={item.id} title={item.title} image_uri={item.image_uri} />
               ))}
             </ScrollView>
           </View>
           <View style={styles.section}>
-            {err ? <Text>Something went wrong</Text> : isLoading ? <Text>Loading...</Text> : null}
-            <FlatList
-              contentContainerStyle={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
-              data={categories}
-              numColumns={2}
-              renderItem={({ item }) => (
+            {category.err ? <Text>Something went wrong</Text> : category.isLoading ? <ActivityIndicator /> : null}
+            <View style={styles.categoryList}>
+              {category.err ? <Text>Something went wrong</Text> : category.isLoading ? <ActivityIndicator /> : null}
+              {category.categories.map(item => (
                 <HomeCard isCategory={true} id={item.id} image_uri={item.image.url ?? ''} title={item.name} />
-              )}
-              keyExtractor={(item: any) => item.id}
-            />
+              ))}
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -195,5 +183,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 20,
     letterSpacing: -0.23,
+  },
+  categoryList: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    marginTop: 12,
   },
 })
