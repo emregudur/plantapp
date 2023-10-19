@@ -45,9 +45,19 @@ function RootLayoutNav() {
             const isPayed = (await AsyncStorage.getItem('isPayed')) === 'payed' ? true : false
 
             if (isPayed === false && name !== 'index') {
-              navigation.dispatch(CommonActions.navigate('index'))
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: 'index' }],
+                })
+              )
             } else if (isPayed === true && name !== '(Home)') {
-              navigation.dispatch(CommonActions.navigate('(Home)'))
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: '(Home)' }],
+                })
+              )
             }
           },
         }}

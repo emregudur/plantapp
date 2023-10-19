@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'
+import { ImageBackground, StyleSheet, Text } from 'react-native'
 
 interface Props {
   id: number
@@ -14,6 +14,7 @@ interface Props {
 export default function HomeCard({ id, image_uri, title, isCategory = false }: Props) {
   return (
     <ImageBackground
+      testID='image-bg'
       style={isCategory ? styles.categoryContent : styles.content}
       imageStyle={isCategory ? styles.categoryImage : styles.image}
       source={{ uri: image_uri }}

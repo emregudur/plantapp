@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignContent": "center",
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "gap": 12,
+      "justifyContent": "center",
+    }
+  }
+  testID="pagination-dots"
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#13231B",
+        "borderRadius": 50,
+        "borderWidth": 0,
+        "height": 10,
+        "width": 10,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "backgroundColor": "#13231B40",
+        "borderRadius": 50,
+        "borderWidth": 0,
+        "height": 6,
+        "width": 6,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "backgroundColor": "#13231B40",
+        "borderRadius": 50,
+        "borderWidth": 0,
+        "height": 6,
+        "width": 6,
+      }
+    }
+  />
+</View>
+`;

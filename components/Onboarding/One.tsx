@@ -1,9 +1,8 @@
-import { Link } from 'expo-router'
 import React from 'react'
 import { Image, Pressable, Text, View } from 'react-native'
-import SliderDots from '../PaginationDots'
-import styles from './styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import PaginationDots from '../PaginationDots'
+import styles from './styles'
 
 export default function OnboardingOne() {
   return (
@@ -24,7 +23,7 @@ export default function OnboardingOne() {
         </Pressable>
       </View>
       <View style={styles.section}>
-        <SliderDots activeIndex={0} />
+        <PaginationDots activeIndex={0} />
       </View>
     </SafeAreaView>
   )

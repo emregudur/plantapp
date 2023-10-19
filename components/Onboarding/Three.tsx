@@ -1,12 +1,12 @@
 import React from 'react'
-import { Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { LinearGradient } from 'expo-linear-gradient'
-import { MaterialCommunityIcons, FontAwesome, MaterialIcons, AntDesign } from '@expo/vector-icons'
-import { useRouter, useNavigation } from 'expo-router'
-import { CommonActions } from '@react-navigation/native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { AntDesign, FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { CommonActions } from '@react-navigation/native'
+import { LinearGradient } from 'expo-linear-gradient'
+import { useNavigation } from 'expo-router'
 
 // import styles from './styles'
 
@@ -22,7 +22,6 @@ const features = [
 
 export default function OnboardingThree() {
   const [activeButton, setActiveButton] = React.useState(1)
-  const router = useRouter()
   const navigation = useNavigation()
 
   const handlePay = () => {
@@ -53,7 +52,7 @@ export default function OnboardingThree() {
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require('../../assets/onboarding3.png')} />
       <View style={styles.closeButton}>
-        <Pressable onPress={handleClose}>
+        <Pressable testID='close-btn' onPress={handleClose}>
           <AntDesign name='close' size={12} color='white' />
         </Pressable>
       </View>
@@ -66,6 +65,7 @@ export default function OnboardingThree() {
       </View>
       <View style={styles.section}>
         <FlatList
+          testID='features'
           data={features}
           horizontal={true}
           renderItem={data => {
@@ -81,7 +81,7 @@ export default function OnboardingThree() {
           }}
         />
       </View>
-      <Pressable onPress={() => setActiveButton(0)}>
+      <Pressable testID='month-btn' onPress={() => setActiveButton(0)}>
         <View style={styles.section}>
           <View style={[styles.button, activeButton === 0 ? styles.activeButton : null]}>
             <View style={[styles.customRadio, activeButton === 0 ? styles.customRadioActive : null]}>
@@ -94,7 +94,7 @@ export default function OnboardingThree() {
           </View>
         </View>
       </Pressable>
-      <Pressable onPress={() => setActiveButton(1)}>
+      <Pressable testID='year-btn' onPress={() => setActiveButton(1)}>
         <View style={styles.section}>
           <LinearGradient
             start={{ x: 1, y: -10 }}
@@ -116,7 +116,11 @@ export default function OnboardingThree() {
         </View>
       </Pressable>
       <View style={styles.section}>
-        <Pressable onPress={handlePay} style={[styles.button, { backgroundColor: '#28AF6E', justifyContent: 'center' }]}>
+        <Pressable
+          testID='pay-btn'
+          onPress={handlePay}
+          style={[styles.button, { backgroundColor: '#28AF6E', justifyContent: 'center' }]}
+        >
           <Text style={styles.buttonText}>Try free for 3 days</Text>
         </Pressable>
       </View>

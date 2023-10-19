@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Entypo, FontAwesome } from '@expo/vector-icons'
-import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View, ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useDispatch } from 'react-redux'
 import HomeCard from '../../components/HomeCard'
 import { actions, useAppSelector } from '../../redux/store'
-import { useDispatch } from 'react-redux'
 
 export default function HomeTab() {
   const dispatch = useDispatch()

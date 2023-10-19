@@ -5,9 +5,9 @@ interface Props {
   activeIndex: number
 }
 
-export default function SliderDots({ activeIndex }: Props) {
+export default function PaginationDots({ activeIndex }: Props) {
   return (
-    <View style={styles.dotsContainer}>
+    <View style={styles.dotsContainer} testID='pagination-dots'>
       {Array(3)
         .fill('')
         .map((_, i) => {

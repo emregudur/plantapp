@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "height": 160,
+      "justifyContent": "flex-end",
+      "marginRight": 12,
+      "width": 240,
+    }
+  }
+>
+  <Image
+    source={
+      {
+        "uri": "image_uri",
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        {
+          "height": 160,
+          "width": 240,
+        },
+        {
+          "borderColor": "#FFFFFF1A",
+          "borderRadius": 12,
+          "borderWidth": 1,
+        },
+      ]
+    }
+    testID="image-bg"
+  />
+  <Text
+    style={
+      {
+        "bottom": 0,
+        "color": "white",
+        "fontFamily": "Rubik-Medium",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "letterSpacing": -0.23,
+        "lineHeight": 20,
+        "padding": 20,
+        "textAlign": "left",
+      }
+    }
+  >
+    test
+  </Text>
+</View>
+`;
