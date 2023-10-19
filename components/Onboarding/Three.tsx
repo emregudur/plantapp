@@ -26,7 +26,7 @@ export default function OnboardingThree() {
 
   const handlePay = () => {
     // pay simulation
-    AsyncStorage.setItem('isPayed', 'payed')
+    AsyncStorage.setItem('onboardingComplated', 'complated')
 
     // geri gidememesi için navigation statini sıfırlıyoruz
     navigation.dispatch(
@@ -38,7 +38,7 @@ export default function OnboardingThree() {
   }
 
   const handleClose = () => {
-    AsyncStorage.setItem('isPayed', 'notPayed')
+    AsyncStorage.setItem('onboardingComplated', 'complated')
 
     navigation.dispatch(
       CommonActions.reset({

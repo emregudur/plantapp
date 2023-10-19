@@ -42,16 +42,16 @@ function RootLayoutNav() {
         screenListeners={{
           focus: async () => {
             const { name } = navigation.getState().routes[0]
-            const isPayed = (await AsyncStorage.getItem('isPayed')) === 'payed' ? true : false
+            const onboardingComplated = (await AsyncStorage.getItem('onboardingComplated')) === 'complated' ? true : false
 
-            if (isPayed === false && name !== 'index') {
+            if (onboardingComplated === false && name !== 'index') {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 0,
                   routes: [{ name: 'index' }],
                 })
               )
-            } else if (isPayed === true && name !== '(Home)') {
+            } else if (onboardingComplated === true && name !== '(Home)') {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 0,
